@@ -1,0 +1,9 @@
+node_modules
+dist
+.powbox
+.env
+.env.*
+*.env
+*.token
+*.tar.gz
+.npmrc

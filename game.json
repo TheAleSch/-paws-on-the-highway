@@ -1,0 +1,89 @@
+{
+  "manifestVersion": 1,
+  "slug": "paws-on-the-highway",
+  "name": "My Game",
+  "creator": "@alesch",
+  "description": "One sentence about the game.",
+  "orientation": "portrait",
+  "runtime": "v1",
+  "entry": "game.js",
+  "scoreMode": "highest",
+  "instruction": "Tap to do the one thing this game is about.",
+  "objective": "Reach 10 points.",
+  "controls": "Tap anywhere.",
+  "permissions": [
+    "save",
+    "scores",
+    "challenges",
+    "share",
+    "analytics"
+  ],
+  "criticalAssets": [
+    "assets/icon.svg"
+  ],
+  "icon": "assets/icon.svg",
+  "themeColor": "#12b5a6",
+  "balance": {},
+  "competitive": {
+    "mode": "score-attack",
+    "label": "Score",
+    "unit": "points",
+    "direction": "higher",
+    "min": 0,
+    "max": 2147483647,
+    "tieBreak": "shared-rank-earliest-best",
+    "trust": "casual"
+  },
+  "creation": {
+    "version": 1,
+    "tags": [
+      "arcade"
+    ],
+    "intent": "Deliver a portrait session focused on this objective: Reach 10 points.",
+    "playerFantasy": "Master the challenge of My Game through repeated play.",
+    "coreLoop": "Tap to increase the score, finish the short run and try to improve.",
+    "whyFun": "Readable decisions and immediate feedback reward practice and a better next attempt.",
+    "progression": "Work toward the session objective, then improve the next result: Reach 10 points.",
+    "constraints": [
+      "Portrait touch controls and the pinned platform runtime.",
+      "Use the platform lifecycle, storage and score APIs only."
+    ],
+    "weakSpots": [
+      "Casual client-reported scores are not proof of verified play."
+    ],
+    "profile": "arcade",
+    "stack": {
+      "language": "typescript",
+      "compiler": "5.9.3",
+      "bundler": "vite@8.3.3",
+      "engine": "playcanvas@2.23.0",
+      "sdk": "@vibegames/sdk@0.2.0"
+    },
+    "mechanisms": [
+      "platform-lifecycle/1",
+      "touch-input/1",
+      "scalar-score/1",
+      "local-progress/1"
+    ],
+    "scoring": {
+      "rationale": "Higher session scores reward progress toward the stated objective.",
+      "measurement": "The submitted scalar is the game’s final session score in points.",
+      "fairness": "Shared ranks use earliest best submission; scores are casual and client-reported."
+    },
+    "remix": {
+      "policy": "POWBOX-REMIX",
+      "preserves": [
+        "Retain platform lifecycle and touch accessibility."
+      ],
+      "changes": [
+        "Child creators must describe their gameplay or presentation changes."
+      ],
+      "open": [
+        "Tune difficulty, presentation and session objectives."
+      ],
+      "attribution": [
+        "Original game: My Game by @you."
+      ]
+    }
+  }
+}
