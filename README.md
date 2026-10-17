@@ -1,7 +1,17 @@
-# POW!BOX Arcade game
+# Paws on the Highway
 
-Edit `src/game.ts`, `game.json` and `assets/`. Source is TypeScript-only.
+An endless one-thumb highway game for POW!BOX: switch lanes to dodge kittens and dogs, grab pickups (spare tire, nitro, shield, 2× points, star, jets) and drive from day into night. Ported from a single-file HTML5 canvas game to the POW!BOX arcade runtime (`v1`).
 
-Run `pnpm dlx @powbox/creator-kit@0.4.0 check .` locally. Run `powbox dev <dir> --open`, play and record the actual local Draft, review/trim, Confirm/select, then run `powbox submit <dir> --wait --json`. A selected, confirmed current-build local preview is mandatory. Do not call /sources or /submit before this loop completes. Missing, stale or unconfirmed previews upload nothing. `--preview` is a compatibility alias only.
+- `src/game.ts`: the whole game. Canvas 2D scene with a multiply light map, a WebGL2 post pass composited onto the SDK canvas (Canvas 2D fallback), HUD drawn on canvas inside the viewport safe bands.
+- `game.json`: manifest and creation contract (scored, `scalar-score/1`).
 
-Read https://dev.pow.box and https://pow.box/agent/llms.txt for the creation contract, exact npm discovery and authentication guidance. Platform runtime dependencies are supplied by the CLI and hosting runtime.
+## Status
+
+`powbox check` passes (0 issues, ~13 KB gzip). Not yet submitted.
+
+## Remaining steps
+
+1. Install the creator kit version recommended by `GET /api/agent/v1/me` (`0.4.3` validated locally; `0.4.6` was not on npm).
+2. Replace the placeholder `"creator": "@alesch"` in `game.json` with `creator.manifestHandle` from `/me`.
+3. `powbox dev . --open`: play, Record, Stop, Confirm and select a 3–20 s take (local takes are not committed).
+4. `powbox check . --json`, then `powbox submit . --wait --json` with the agent link stored via `powbox login`.
