@@ -1,20 +1,18 @@
 {
   "manifestVersion": 1,
   "slug": "paws-on-the-highway",
-  "name": "My Game",
+  "name": "Paws on the Highway",
   "creator": "@alesch",
-  "description": "One sentence about the game.",
+  "description": "Drive an endless highway at dusk and swerve around kittens and dogs. Grab spare tires, nitro, shields, stars and jets to chase a high score.",
   "orientation": "portrait",
   "runtime": "v1",
   "entry": "game.js",
   "scoreMode": "highest",
-  "instruction": "Tap to do the one thing this game is about.",
-  "objective": "Reach 10 points.",
-  "controls": "Tap anywhere.",
+  "instruction": "Switch lanes to dodge kittens and dogs. Grab pickups for boosts and lives.",
+  "objective": "Drive as far as you can before you run out of spare tires.",
+  "controls": "Tap left or right side, or use the arrow buttons, to change lanes.",
   "permissions": [
-    "save",
     "scores",
-    "challenges",
     "share",
     "analytics"
   ],
@@ -22,10 +20,10 @@
     "assets/icon.svg"
   ],
   "icon": "assets/icon.svg",
-  "themeColor": "#12b5a6",
+  "themeColor": "#ff6b5a",
   "balance": {},
   "competitive": {
-    "mode": "score-attack",
+    "mode": "survival-run",
     "label": "Score",
     "unit": "points",
     "direction": "higher",
@@ -37,19 +35,23 @@
   "creation": {
     "version": 1,
     "tags": [
-      "arcade"
+      "arcade",
+      "endless",
+      "action"
     ],
-    "intent": "Deliver a portrait session focused on this objective: Reach 10 points.",
-    "playerFantasy": "Master the challenge of My Game through repeated play.",
-    "coreLoop": "Tap to increase the score, finish the short run and try to improve.",
-    "whyFun": "Readable decisions and immediate feedback reward practice and a better next attempt.",
-    "progression": "Work toward the session objective, then improve the next result: Reach 10 points.",
+    "intent": "A cozy one-thumb endless driver: swerve between three lanes around wandering kittens and dogs, collect pickups and drive as far as you can before the spare tires run out.",
+    "playerFantasy": "Cruise a highway through a full day and night in a little red car, keeping every stray pet safe while the road gets busier.",
+    "coreLoop": "Change lanes to avoid animals, grab pickups (spare tire, nitro, shield, 2x points, star, jets), earn points for distance, close calls and fly-bys, and lose a tire on each contact until none are left.",
+    "whyFun": "Instant lane switches, forgiving hitboxes and generous power-ups make every near miss feel earned, while the day/night cycle with headlights and eyeshine keeps the road readable and fresh.",
+    "progression": "Speed ramps from 240 to 600, two-lane blocks begin after 1500 distance, crossing animals after 6000, and difficulty reaches full at 30000; higher scores come from surviving longer and chaining pickups.",
     "constraints": [
-      "Portrait touch controls and the pinned platform runtime.",
-      "Use the platform lifecycle, storage and score APIs only."
+      "Portrait, one-thumb touch controls with on-screen arrow buttons; arrow keys on desktop.",
+      "No network, storage or remote code; scores go through the platform score API only.",
+      "Canvas 2D scene with a game-owned WebGL2 post pass on the SDK canvas; Canvas 2D fallback without WebGL2."
     ],
     "weakSpots": [
-      "Casual client-reported scores are not proof of verified play."
+      "Casual client-reported scores are not proof of verified play.",
+      "The display font falls back to system fonts because web fonts cannot be loaded."
     ],
     "profile": "arcade",
     "stack": {
@@ -62,27 +64,27 @@
     "mechanisms": [
       "platform-lifecycle/1",
       "touch-input/1",
-      "scalar-score/1",
-      "local-progress/1"
+      "scalar-score/1"
     ],
     "scoring": {
-      "rationale": "Higher session scores reward progress toward the stated objective.",
-      "measurement": "The submitted scalar is the game’s final session score in points.",
-      "fairness": "Shared ranks use earliest best submission; scores are casual and client-reported."
+      "rationale": "Points reward distance driven plus skillful play: close calls, fly-bys, star and nitro bounces, pickups and the 2x multiplier.",
+      "measurement": "The submitted scalar is the run's final integer score in points when the last spare tire is gone.",
+      "fairness": "Shared ranks use the earliest best submission; scores are casual and client-reported."
     },
     "remix": {
       "policy": "POWBOX-REMIX",
       "preserves": [
-        "Retain platform lifecycle and touch accessibility."
+        "Keep animals unharmed: contact always makes them hop away safely.",
+        "Keep one-thumb lane controls and the platform lifecycle."
       ],
       "changes": [
-        "Child creators must describe their gameplay or presentation changes."
+        "Remixers should describe their gameplay, tuning or presentation changes."
       ],
       "open": [
-        "Tune difficulty, presentation and session objectives."
+        "Tune pickups, difficulty ramp, day/night palette and the post-processing look."
       ],
       "attribution": [
-        "Original game: My Game by @you."
+        "Original game: Paws on the Highway by @alesch, ported from a single-file HTML5 canvas game."
       ]
     }
   }
